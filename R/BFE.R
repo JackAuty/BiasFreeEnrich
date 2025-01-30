@@ -7,8 +7,8 @@
 #' @param repeats Number of permutations to run for each ontology. Higher values increase precision but slow execution (default = 10000).
 #' @param databases Vector of databases to compare against. Options include:
 #'   "GO_Biological_Process_2023", "GO_Cellular_Component_2023", "GO_Molecular_Function_2023",
-#'   "KEGG_2021_Human", "KEGG_2019_Mouse", "WikiPathways_2024_Mouse", "WikiPathways_2024_Human".
-#' @param species Species for GO searches: "mouse" or "human".
+#'   "KEGG_2021_Human", "KEGG_2019_Mouse", "WikiPathways_2024_Mouse", "WikiPathways_2024_Human" (default = all of them)
+#' @param species INSTEAD of selecting the databases you can choose a species. It will then enrich on all databases from that species: "mouse" or "human". Do not attempt to select databases AND species.
 #'
 #' @return A list of significantly enriched pathways for each selected database.
 #' @export
@@ -16,7 +16,8 @@
 #' @examples
 #' sig_gene <- c("IL1B", "IL1A", "IL6")
 #' ctrl_gene <- c("IL1B", "IL1A", "IL6", "IL10", "TGFB", "IL4")
-#' results <- BiasFreeEnrich(sig_gene, ctrl_gene, databases = c("GO_Biological_Process_2023", "KEGG_2021_Human"), species = "human")
+#' results <- BiasFreeEnrich(sig_gene, ctrl_gene, databases = c("GO_Biological_Process_2023", "KEGG_2021_Human"))
+#' @name BiasFreeEnrich
 BiasFreeEnrich<-function(sig_gene,
                          ctrl_gene,
                          min_protein_count=2,
@@ -72,7 +73,7 @@ BiasFreeEnrich<-function(sig_gene,
     for(k in 1:length(db)){
       prog <- prog +1
       setTxtProgressBar(pb, prog)
-      Significant_only <-  enrichR::enrichr(sig_gene, databases = db[k])
+      Significant_only <- enrichr(sig_gene, databases = db[k])
 
       Significant_only_df <- data.frame(Significant_only[1])
 
@@ -117,7 +118,7 @@ BiasFreeEnrich<-function(sig_gene,
 
 
 
-    ctrl_pathways <-  enrichR::enrichr(ctrl_gene, databases = db[k])
+    ctrl_pathways <- enrichr(ctrl_gene, databases = db[k])
 
     ctrl_pathways_result <- data.frame(ctrl_pathways[1])
 
@@ -134,7 +135,7 @@ BiasFreeEnrich<-function(sig_gene,
 
     prog <- prog +1
     setTxtProgressBar(pb, prog)
-    sig_pathways <-  enrichR::enrichr(sig_gene, databases = db[k])
+    sig_pathways <- enrichr(sig_gene, databases = db[k])
 
     sig_pathways_result <- data.frame(sig_pathways[1])
 

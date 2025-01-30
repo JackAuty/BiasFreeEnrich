@@ -38,9 +38,9 @@ BFE(
 
 \item{databases}{Vector of databases to compare against. Options include:
 "GO_Biological_Process_2023", "GO_Cellular_Component_2023", "GO_Molecular_Function_2023",
-"KEGG_2021_Human", "KEGG_2019_Mouse", "WikiPathways_2024_Mouse", "WikiPathways_2024_Human".}
+"KEGG_2021_Human", "KEGG_2019_Mouse", "WikiPathways_2024_Mouse", "WikiPathways_2024_Human" (default = all of them)}
 
-\item{species}{Species for GO searches: "mouse" or "human".}
+\item{species}{INSTEAD of selecting the databases you can choose a species. It will then enrich on all databases from that species: "mouse" or "human". Do not attempt to select databases AND species.}
 }
 \value{
 A list of significantly enriched pathways for each selected database.
@@ -51,5 +51,5 @@ BiasFreeEnrich: Permutation-based Protein Signature Analysis
 \examples{
 sig_gene <- c("IL1B", "IL1A", "IL6")
 ctrl_gene <- c("IL1B", "IL1A", "IL6", "IL10", "TGFB", "IL4")
-results <- BiasFreeEnrich(sig_gene, ctrl_gene, databases = c("GO_Biological_Process_2023", "KEGG_2021_Human"), species = "human")
+results <- BiasFreeEnrich(sig_gene, ctrl_gene, databases = c("GO_Biological_Process_2023", "KEGG_2021_Human"))
 }
