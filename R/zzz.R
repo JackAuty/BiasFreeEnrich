@@ -8,7 +8,7 @@
   }
 
   # List of required packages
-  packages <- c("enrichR", "stringr", "stats", "utils")
+  packages <- c("enrichR", "stringr", "stats", "utils","DiscreteQvalue")
 
   # Install and load required packages
   lapply(packages, install_and_load)
