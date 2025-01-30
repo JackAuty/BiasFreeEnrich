@@ -72,7 +72,7 @@ BiasFreeEnrich<-function(sig_gene,
     for(k in 1:length(db)){
       prog <- prog +1
       setTxtProgressBar(pb, prog)
-      Significant_only <- enrichr(sig_gene, databases = db[k])
+      Significant_only <-  enrichR::enrichr(sig_gene, databases = db[k])
 
       Significant_only_df <- data.frame(Significant_only[1])
 
@@ -117,7 +117,7 @@ BiasFreeEnrich<-function(sig_gene,
 
 
 
-    ctrl_pathways <- enrichr(ctrl_gene, databases = db[k])
+    ctrl_pathways <-  enrichR::enrichr(ctrl_gene, databases = db[k])
 
     ctrl_pathways_result <- data.frame(ctrl_pathways[1])
 
@@ -134,7 +134,7 @@ BiasFreeEnrich<-function(sig_gene,
 
     prog <- prog +1
     setTxtProgressBar(pb, prog)
-    sig_pathways <- enrichr(sig_gene, databases = db[k])
+    sig_pathways <-  enrichR::enrichr(sig_gene, databases = db[k])
 
     sig_pathways_result <- data.frame(sig_pathways[1])
 
