@@ -22,9 +22,9 @@ BiasFreeEnrich<-function(sig_gene,
                          ctrl_gene,
                          min_protein_count=2,
                          repeats = 10000,
-                         databases = c("GO_Biological_Process_2023",
-                                       "GO_Cellular_Component_2023",
-                                       "GO_Molecular_Function_2023",
+                         databases = c("GO_Biological_Process_2025",
+                                       "GO_Cellular_Component_2025",
+                                       "GO_Molecular_Function_2025",
                                        "KEGG_2021_Human",
                                        "KEGG_2019_Mouse",
                                        "WikiPathways_2024_Mouse",
@@ -42,9 +42,9 @@ BiasFreeEnrich<-function(sig_gene,
   }
 
   if(is.numeric(databases)){
-    db_text<- c("GO_Biological_Process_2023",
-                "GO_Cellular_Component_2023",
-                "GO_Molecular_Function_2023",
+    db_text<- c("GO_Biological_Process_2025",
+                "GO_Cellular_Component_2025",
+                "GO_Molecular_Function_2025",
                 "KEGG_2021_Human",
                 "KEGG_2019_Mouse",
                 "WikiPathways_2024_Mouse",
@@ -61,7 +61,7 @@ BiasFreeEnrich<-function(sig_gene,
     ctrl_gene <- toupper(unique(as.character(ctrl_gene)))
   }
 
-  
+
   sig_gene <- toupper(unique(as.character(sig_gene)))
 
   results_list<-list()
@@ -93,7 +93,7 @@ BiasFreeEnrich<-function(sig_gene,
       prog <- prog +1
       setTxtProgressBar(pb, prog)
 
-      if(nrow(ctrl_pathways_result) == 0){
+      if(nrow(Significant_only_df) == 0){
         print(paste("No significant Enrichment found in", db[k]))
         next
       }
