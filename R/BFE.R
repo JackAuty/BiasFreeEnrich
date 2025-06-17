@@ -57,7 +57,7 @@ BiasFreeEnrich<-function(sig_gene,
   db<-db_text[grepl(spec, db_text)]
 
   if(!missing(ctrl_gene)){
-    print("Background proteins/genes not provided")
+
     ctrl_gene <- toupper(unique(as.character(ctrl_gene)))
   }
   sig_gene <- toupper(unique(as.character(sig_gene)))
@@ -277,3 +277,4 @@ BiasFreeEnrich<-function(sig_gene,
 #' @rdname BiasFreeEnrich
 #' @export
 BFE <- BiasFreeEnrich
+
