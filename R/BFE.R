@@ -60,6 +60,8 @@ BiasFreeEnrich<-function(sig_gene,
 
     ctrl_gene <- toupper(unique(as.character(ctrl_gene)))
   }
+
+  
   sig_gene <- toupper(unique(as.character(sig_gene)))
 
   results_list<-list()
