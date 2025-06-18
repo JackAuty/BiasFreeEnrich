@@ -270,6 +270,31 @@ BiasFreeEnrich<-function(sig_gene,
   }
   setTxtProgressBar(pb, prog+3)
 
+  # Reporting genes recognised or not
+  gene_list <- read.csv(system.file("extdata", "gene_list", package = "BiasFreeEnrich"))
+  gene_list$x <- toupper(gene_list$x)
+
+  genes_provided <- toupper(c(sig_gene, ctrl_gene, "DOG"))
+  genes_in_list <- genes_provided[genes_provided %in% gene_list$x]
+  genes_not_recognised <- setdiff(genes_provided, genes_in_list)
+
+  # Print number of recognised genes
+  print(paste("Number of total genes recognised:", length(genes_in_list)))
+
+  # Print number of unrecognised genes
+  print(paste("Number of genes not recognised:", length(genes_not_recognised)))
+
+  # Show up to 10 unrecognised genes
+  if (length(genes_not_recognised) > 0) {
+    to_show <- head(genes_not_recognised, 10)
+    print("Genes not recognised (up to 10 shown):")
+    print(to_show)
+
+    if (length(genes_not_recognised) > 10) {
+      cat("Note: There are more than 10 unrecognised genes.\n")
+    }
+  }
+
   return(results_list)
 }
 
