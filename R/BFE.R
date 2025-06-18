@@ -34,7 +34,7 @@ BiasFreeEnrich<-function(sig_gene,
   pb <- txtProgressBar(min = 0, max = (5+2*length(databases)), style = 3)
   prog<-1
   setTxtProgressBar(pb, prog)
-  print("\n")
+  cat("\n")
   if(!missing(ctrl_gene)){
     if(length(sig_gene) > length(ctrl_gene)){
       stop("Error: Significant gene list is
@@ -67,7 +67,7 @@ BiasFreeEnrich<-function(sig_gene,
   results_list<-list()
   prog<-2
   setTxtProgressBar(pb, prog)
-  print("\n")
+  cat("\n")
 
   if(missing(ctrl_gene)){
     print("Warning no background data provided")
@@ -94,7 +94,7 @@ BiasFreeEnrich<-function(sig_gene,
       setTxtProgressBar(pb, prog)
       print("\n")
       if(nrow(Significant_only_df) == 0){
-        print(paste("No significant Enrichment found in", db[k]))
+        cat(paste("No significant Enrichment found in", db[k]))
         next
       }
       colnames(Significant_only_df)[colnames(Significant_only_df)=="Genes"] <- "Significant_genes"
@@ -107,7 +107,7 @@ BiasFreeEnrich<-function(sig_gene,
 
     }
     setTxtProgressBar(pb, prog+3)
-    print("\n")
+    cat("\n")
     return(results_list)
   }
 
@@ -117,7 +117,7 @@ BiasFreeEnrich<-function(sig_gene,
   for(k in 1:length(db)){
     prog <- prog +1
     setTxtProgressBar(pb, prog)
-
+    cat("\n")
 
 
     ctrl_pathways <- enrichr(ctrl_gene, databases = db[k])
@@ -137,7 +137,7 @@ BiasFreeEnrich<-function(sig_gene,
 
     prog <- prog +1
     setTxtProgressBar(pb, prog)
-    print("\n")
+    cat("\n")
     sig_pathways <- enrichr(sig_gene, databases = db[k])
 
     sig_pathways_result <- data.frame(sig_pathways[1])
