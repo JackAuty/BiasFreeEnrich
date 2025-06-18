@@ -70,7 +70,7 @@ BiasFreeEnrich<-function(sig_gene,
   cat("\n")
 
   if(missing(ctrl_gene)){
-    print("Warning no background data provided")
+    cat("Warning no background data provided")
     #Loop through database
     for(k in 1:length(db)){
       prog <- prog +1
@@ -92,7 +92,7 @@ BiasFreeEnrich<-function(sig_gene,
 
       prog <- prog +1
       setTxtProgressBar(pb, prog)
-      print("\n")
+      cat("\n")
       if(nrow(Significant_only_df) == 0){
         cat(paste("No significant Enrichment found in", db[k]))
         next
@@ -165,7 +165,7 @@ BiasFreeEnrich<-function(sig_gene,
     sig_pathways_result<-sig_pathways_result[
       sig_pathways_result$gene_number>min_protein_count,]
     if(nrow(sig_pathways_result) == 0){
-      print(paste("No significant Enrichment found in", db[k]))
+      cat(paste("No significant Enrichment found in", db[k]))
       next
     }
 
@@ -249,8 +249,8 @@ BiasFreeEnrich<-function(sig_gene,
          ss=sort(unique(sig_pathways_result$P_value_background_adjusted)),
          method = "Chen")$q.value
     length(db)
-    print(k)
-    print(db[k])
+    cat(k)
+    cat(db[k])
 
 
     colnames(sig_pathways_result_return)[
@@ -270,7 +270,7 @@ BiasFreeEnrich<-function(sig_gene,
 
   }
   setTxtProgressBar(pb, prog+3)
-  print("\n")
+  cat("\n")
   # Load the dataset (it will create an object called gene_list in your workspace)
   data("gene_list", package = "BiasFreeEnrich")
   gene_list$x <- toupper(gene_list$x)
@@ -279,17 +279,17 @@ BiasFreeEnrich<-function(sig_gene,
   genes_in_list <- genes_provided[genes_provided %in% gene_list$x]
   genes_not_recognised <- setdiff(genes_provided, genes_in_list)
 
-  # Print number of recognised genes
-  print(paste("Number of total genes recognised:", length(genes_in_list)))
+  # cat number of recognised genes
+  cat(paste("Number of total genes recognised:", length(genes_in_list)))
 
-  # Print number of unrecognised genes
-  print(paste("Number of genes not recognised:", length(genes_not_recognised)))
+  # cat number of unrecognised genes
+  cat(paste("Number of genes not recognised:", length(genes_not_recognised)))
 
   # Show up to 10 unrecognised genes
   if (length(genes_not_recognised) > 0) {
     to_show <- head(genes_not_recognised, 10)
-    print("Genes not recognised (up to 10 shown):")
-    print(to_show)
+    cat("Genes not recognised (up to 10 shown):")
+    cat(to_show)
 
     if (length(genes_not_recognised) > 10) {
       cat("Note: There are more than 10 unrecognised genes.\n")
