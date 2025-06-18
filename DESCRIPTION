@@ -1,6 +1,6 @@
 Package: BiasFreeEnrich
 Title: Enrichment analyses
-Version: 0.0.0.9000
+Version: 1.0.0
 Authors@R: 
     person("Jack", "Auty", , "jack.auty@utas.edu.au", role = c("aut", "cre"))
 Description: BiasFreeEnrich is an R package that uses permutation tests to compare protein signatures between control and comparison groups. The package provides a more sensitive analysis that adjusts for sample bias, offering researchers a robust method for understanding protein expression differences.
