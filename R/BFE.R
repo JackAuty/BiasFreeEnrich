@@ -16,7 +16,7 @@
 #' @examples
 #' sig_gene <- c("IL1B", "IL1A", "IL6")
 #' ctrl_gene <- c("IL1B", "IL1A", "IL6", "IL10", "TGFB", "IL4")
-#' results <- BiasFreeEnrich(sig_gene, ctrl_gene, databases = c("GO_Biological_Process_2023", "KEGG_2021_Human"))
+#' results <- BiasFreeEnrich(sig_gene, ctrl_gene, databases = c("GO_Biological_Process_2025", "KEGG_2025_Human"))
 #' @name BiasFreeEnrich
 BiasFreeEnrich<-function(sig_gene,
                          ctrl_gene,
@@ -34,7 +34,7 @@ BiasFreeEnrich<-function(sig_gene,
   pb <- txtProgressBar(min = 0, max = (5+2*length(databases)), style = 3)
   prog<-1
   setTxtProgressBar(pb, prog)
-
+  print("\n")
   if(!missing(ctrl_gene)){
     if(length(sig_gene) > length(ctrl_gene)){
       stop("Error: Significant gene list is
@@ -67,7 +67,7 @@ BiasFreeEnrich<-function(sig_gene,
   results_list<-list()
   prog<-2
   setTxtProgressBar(pb, prog)
-
+  print("\n")
 
   if(missing(ctrl_gene)){
     print("Warning no background data provided")
@@ -92,7 +92,7 @@ BiasFreeEnrich<-function(sig_gene,
 
       prog <- prog +1
       setTxtProgressBar(pb, prog)
-
+      print("\n")
       if(nrow(Significant_only_df) == 0){
         print(paste("No significant Enrichment found in", db[k]))
         next
@@ -107,7 +107,7 @@ BiasFreeEnrich<-function(sig_gene,
 
     }
     setTxtProgressBar(pb, prog+3)
-
+    print("\n")
     return(results_list)
   }
 
@@ -137,6 +137,7 @@ BiasFreeEnrich<-function(sig_gene,
 
     prog <- prog +1
     setTxtProgressBar(pb, prog)
+    print("\n")
     sig_pathways <- enrichr(sig_gene, databases = db[k])
 
     sig_pathways_result <- data.frame(sig_pathways[1])
@@ -269,9 +270,9 @@ BiasFreeEnrich<-function(sig_gene,
 
   }
   setTxtProgressBar(pb, prog+3)
-
-  # Reporting genes recognised or not
-  gene_list <- read.csv(system.file("extdata", "gene_list", package = "BiasFreeEnrich"))
+  print("\n")
+  # Load the dataset (it will create an object called gene_list in your workspace)
+  data("gene_list", package = "BiasFreeEnrich")
   gene_list$x <- toupper(gene_list$x)
 
   genes_provided <- toupper(c(sig_gene, ctrl_gene, "DOG"))
@@ -294,7 +295,6 @@ BiasFreeEnrich<-function(sig_gene,
       cat("Note: There are more than 10 unrecognised genes.\n")
     }
   }
-
   return(results_list)
 }
 
@@ -304,4 +304,5 @@ BiasFreeEnrich<-function(sig_gene,
 #' @rdname BiasFreeEnrich
 #' @export
 BFE <- BiasFreeEnrich
-
+x<-BFE(sig_gene, ctrl_gene)
+x$GO_Biological_Process_2025
