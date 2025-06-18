@@ -275,7 +275,7 @@ BiasFreeEnrich<-function(sig_gene,
   data("gene_list", package = "BiasFreeEnrich")
   gene_list$x <- toupper(gene_list$x)
 
-  genes_provided <- toupper(c(sig_gene, ctrl_gene, "DOG"))
+  genes_provided <- toupper(c(sig_gene, ctrl_gene))
   genes_in_list <- genes_provided[genes_provided %in% gene_list$x]
   genes_not_recognised <- setdiff(genes_provided, genes_in_list)
 
@@ -304,5 +304,4 @@ BiasFreeEnrich<-function(sig_gene,
 #' @rdname BiasFreeEnrich
 #' @export
 BFE <- BiasFreeEnrich
-x<-BFE(sig_gene, ctrl_gene)
-x$GO_Biological_Process_2025
+
