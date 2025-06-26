@@ -11,7 +11,7 @@ Enrichment analysis is widely used to interpret proteomics and transcriptomics d
 - Using permutation tests to simulate the null distribution of overlapping genes.
 - Returning adjusted p-values using both Benjamini-Hochberg (BH) and discrete q-value methods (Chen et al.).
 - Supporting multiple databases: GO (2025), KEGG, and WikiPathways.
-- Offering a user-friendly web app for visualisation (e.g., tornado plots).
+
 
 ## 🚀 Installation
 
