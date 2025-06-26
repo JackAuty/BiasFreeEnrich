@@ -281,10 +281,10 @@ BiasFreeEnrich<-function(sig_gene,
 
   # cat number of recognised genes
   cat(paste("Number of total genes recognised:", length(genes_in_list)))
-
+  cat("\n")
   # cat number of unrecognised genes
   cat(paste("Number of genes not recognised:", length(genes_not_recognised)))
-
+  cat("\n")
   # Show up to 10 unrecognised genes
   if (length(genes_not_recognised) > 0) {
     to_show <- head(genes_not_recognised, 10)
