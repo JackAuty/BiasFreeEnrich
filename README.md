@@ -17,10 +17,7 @@ Enrichment analysis is widely used to interpret proteomics and transcriptomics d
 
 ```r
 # Install dependencies
-install.packages(c("stringr", "DiscreteQvalue", "remotes"))
-
-# Install enrichR if not already
-remotes::install_github("wjawaid/enrichR")
+install.packages(c("stringr", "DiscreteQvalue", "remotes", "enrichR"))
 
 # Install BiasFreeEnrich
 remotes::install_github("JackAuty/BiasFreeEnrich")

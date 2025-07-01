@@ -70,7 +70,7 @@ BiasFreeEnrich<-function(sig_gene,
   cat("\n")
 
   if(missing(ctrl_gene)){
-    cat("Warning no background data provided")
+    warning(cat("Warning no background data provided"))
     #Loop through database
     for(k in 1:length(db)){
       prog <- prog +1
