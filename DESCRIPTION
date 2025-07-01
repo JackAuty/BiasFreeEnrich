@@ -16,9 +16,9 @@ Imports:
     stringr,
     stats,
     utils,
-    DiscreteQvalue,
+    DiscreteQvalue
     
 Remotes:
-wjawaid/enrichR
+    wjawaid/enrichR
 
 LazyData: true

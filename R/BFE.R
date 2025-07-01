@@ -99,7 +99,8 @@ BiasFreeEnrich<-function(sig_gene,
       }
       colnames(Significant_only_df)[colnames(Significant_only_df)=="Genes"] <- "Significant_genes"
       colnames(Significant_only_df)[colnames(Significant_only_df)=="Adjusted"] <- "P_value_BH_FDR"
-      Significant_only_df$Significant_genes <- str_replace_all(
+      Significant_only_df$Significant_genes <- stringr::str_replace_all(
+
         Significant_only_df$Significant_genes,
         ";", ", ")
       Significant_only_df$Warning<-"No background dataset provided"
@@ -262,7 +263,7 @@ BiasFreeEnrich<-function(sig_gene,
                                                            -which(colnames(
                                                              sig_pathways_result_return
                                                            ) == "Term_id")]
-    sig_pathways_result_return$Significant_genes <- str_replace_all(
+    sig_pathways_result_return$Significant_genes <- stringr::str_replace_all(
       sig_pathways_result_return$Significant_genes,
       ";", ", ")
 
