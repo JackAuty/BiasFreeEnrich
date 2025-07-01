@@ -11,6 +11,7 @@ Enrichment analysis is widely used to interpret proteomics and transcriptomics d
 - Using permutation tests to simulate the null distribution of overlapping genes.
 - Returning adjusted p-values using both Benjamini-Hochberg (BH) and discrete q-value methods (Chen et al.).
 - Supporting multiple databases: GO (2025), KEGG, and WikiPathways.
+- You can perform a standard enrichment analysis against the entire genome by simply omitting a background dataset. In this case, a   Benjamini-Hochberg (BH) false discovery rate (FDR) correction will be applied by default.
 
 
 ## 🚀 Installation
@@ -18,6 +19,7 @@ Enrichment analysis is widely used to interpret proteomics and transcriptomics d
 ```r
 # Install dependencies
 install.packages(c("stringr", "DiscreteQvalue", "remotes", "enrichR"))
+remotes::install_github("wjawaid/enrichR")
 
 # Install BiasFreeEnrich
 remotes::install_github("JackAuty/BiasFreeEnrich")
