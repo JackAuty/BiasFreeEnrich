@@ -246,7 +246,7 @@ BiasFreeEnrich<-function(sig_gene,
       method="BH"
     )
     sig_pathways_result_return$P_value_background_adjusted_CHEN_FDR <-
-      DQ(sig_pathways_result$P_value_background_adjusted,
+      DiscreteQvalue::DQ(sig_pathways_result$P_value_background_adjusted,
          ss=sort(unique(sig_pathways_result$P_value_background_adjusted)),
          method = "Chen")$q.value
     length(db)
