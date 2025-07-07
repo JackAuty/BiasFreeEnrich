@@ -155,12 +155,12 @@ BiasFreeEnrich<-function(sig_gene,
 
 
 
-    ctrl_pathways_result$gene_number<-  str_count(
+    ctrl_pathways_result$gene_number<-  stringr::str_count(
       ctrl_pathways_result$Genes, ";")+1
     ctrl_pathways_result<-ctrl_pathways_result[
       ctrl_pathways_result$gene_number>min_protein_count,]
 
-    sig_pathways_result$gene_number<-  str_count(
+    sig_pathways_result$gene_number<-  stringr::str_count(
       sig_pathways_result$Genes, ";")+1
 
     sig_pathways_result<-sig_pathways_result[
@@ -178,13 +178,13 @@ BiasFreeEnrich<-function(sig_gene,
     sig_pathways_result$Term_id<-paste(
       sig_pathways_result$Term,
       sig_pathways_result$Database, sep =" ")
-    sig_pathways_result$Term_id<-str_remove_all(
+    sig_pathways_result$Term_id<-stringr::str_remove_all(
       sig_pathways_result$Term_id, "Term")
 
     ctrl_pathways_result$Term_id<-paste(
       ctrl_pathways_result$Term,
       ctrl_pathways_result$Database, sep =" ")
-    ctrl_pathways_result$Term_id<-str_remove_all(
+    ctrl_pathways_result$Term_id<-stringr::str_remove_all(
       ctrl_pathways_result$Term_id, "Term")
 
     for(i in 1:nrow(sig_pathways_result)){
